@@ -6,14 +6,17 @@ import drawForces from "./draw-forces.js";
 import { ViewHelper } from "./ViewHelper.js";
 
 let renderer, scene, camera, controls, helper;
-const uploadedFileJSON = sessionStorage.getItem("uploadedFile");
-const jsonData = JSON.parse(uploadedFileJSON);
-init();
-animate();
 
-function init() {
+export default function runVisualizer() {
+  const uploadedFileJSON = sessionStorage.getItem("uploadedFile");
+  const data = JSON.parse(uploadedFileJSON);
+  init(data);
+  animate();
+}
+
+function init(data) {
   // renderer
-  const container = document.getElementById("content");
+  const container = document.getElementById("visualizer");
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -50,11 +53,11 @@ function init() {
   // axes
   //   scene.add(new THREE.AxesHelper(20));
 
-  drawFigure(jsonData, scene);
+  drawFigure(data, scene);
   // draw constraints
-  drawConstraints(jsonData, scene);
+  drawConstraints(data, scene);
   // draw forces
-  drawForces(jsonData, scene);
+  drawForces(data, scene);
 
   // helper
   helper = new ViewHelper(camera, renderer);

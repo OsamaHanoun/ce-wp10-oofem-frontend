@@ -1,30 +1,35 @@
 body {
-    background-color: #dadfed;
+  background-color: #dadfed;
 }
-#content{
-    padding: 0 !important;
-}
-.label{
-    width: 100%;
-    margin-bottom: 0;
 
+#content {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
 }
+
+#visualizer {
+  background-color: #c8ccc9;
+  height: calc(100vh - 250px);
+}
+
 .label {
-    cursor: pointer !important;
-  }
+  width: 100%;
+  margin-bottom: 0;
+}
+
+li {
+  cursor: pointer !important;
+}
+
 #log {
-    padding: 4% 4%;
+  padding: 4% 4%;
+  height: 250px;
 }
 .title {
-    margin-bottom: 0 !important;
-    background-color: #5f6f99;
+  margin-bottom: 0 !important;
+  background-color: #5f6f99;
 }
-.P{
-    color: #333333;
-}
-
-#axises {
-    position: fixed;
-    bottom: 20px;
-    left: 250px;
+.P {
+  color: #333333;
 }
