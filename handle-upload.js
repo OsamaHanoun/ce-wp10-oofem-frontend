@@ -161,7 +161,7 @@ export default function startHandler() {
 
 //function that gets executed when the file is done uploading
 function testFile(event) {
-  const container = document.getElementById("visualizer");
+  const container = document.getElementById("renderer-container");
   container.textContent = "";
   document.getElementById("visualize").style.display = "none";
   document.getElementById("run").style.display = "none";

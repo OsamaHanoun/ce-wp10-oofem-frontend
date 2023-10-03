@@ -8,13 +8,6 @@ body {
   /* flex-direction: column; */
 }
 
-#visualizer {
-  background-color: #c8ccc9;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .label {
   width: 100%;
   margin-bottom: 0;
@@ -34,4 +27,15 @@ li {
 }
 .P {
   color: #333333;
+}
+
+/* ############# visualizer ############# */
+#visualizer {
+  background-color: #c8ccc9;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#visualizer-btn-container {
+  position: absolute;
 }

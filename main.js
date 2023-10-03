@@ -1,6 +1,6 @@
 import startHandler from "./handle-upload";
-import startWS from "./ws.js"
+import iniVisualizerHandlers from "./src/visualizer/visualizer-handlers";
+import startWS from "./ws.js";
 startHandler();
 startWS();
-
-
+iniVisualizerHandlers();

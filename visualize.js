@@ -16,7 +16,7 @@ export default function runVisualizer() {
 
 function init(data) {
   // renderer
-  const container = document.getElementById("visualizer");
+  const container = document.getElementById("renderer-container");
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
