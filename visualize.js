@@ -18,7 +18,7 @@ function init(data) {
   // renderer
   const container = document.getElementById("visualizer");
   renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.autoClear = false;
   container.appendChild(renderer.domElement);
@@ -28,7 +28,7 @@ function init(data) {
   // camera
   camera = new THREE.PerspectiveCamera(
     40,
-    container.clientWidth / container.clientHeight,
+    window.innerWidth / window.innerHeight,
     1,
     10000
   );
@@ -51,7 +51,7 @@ function init(data) {
   scene.add(ambientLight);
 
   // axes
-  //   scene.add(new THREE.AxesHelper(20));
+  // scene.add(new THREE.AxesHelper(20));
 
   drawFigure(data, scene);
   // draw constraints
@@ -60,7 +60,7 @@ function init(data) {
   drawForces(data, scene);
 
   // helper
-  helper = new ViewHelper(camera, renderer);
+  helper = new ViewHelper(camera, renderer, controls);
   helper.setControls(controls);
 }
 

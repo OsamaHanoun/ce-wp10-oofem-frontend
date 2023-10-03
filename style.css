@@ -4,13 +4,15 @@ body {
 
 #content {
   padding: 0 !important;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 #visualizer {
   background-color: #c8ccc9;
-  height: calc(100vh - 250px);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .label {
