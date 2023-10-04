@@ -4,8 +4,6 @@ export default function startWS() {
 
 function handleRun() {
   const uploadedFileJSON = sessionStorage.getItem("uploadedFile");
-  const data = JSON.parse(uploadedFileJSON);
-
   sessionStorage.removeItem("downloadFile");
 
   const socket = new WebSocket("ws://localhost:8081");
@@ -37,6 +35,7 @@ function handleRun() {
       sessionStorage.setItem("downloadFile", JSON.stringify(results));
       document.getElementById("btn-download").disabled = false;
       document.getElementById("btn-visualize-results").disabled = false;
+      document.getElementById("btn-log-results").disabled = false;
     } catch (error) {
       console.log(event.data);
     }

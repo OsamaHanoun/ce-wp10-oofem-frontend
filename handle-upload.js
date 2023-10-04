@@ -163,8 +163,9 @@ export default function startHandler() {
 function testFile(event) {
   const container = document.getElementById("renderer-container");
   container.textContent = "";
-  document.getElementById("visualize").style.display = "none";
-  document.getElementById("run").style.display = "none";
+  document.getElementById("visualize").disabled = true;
+  document.getElementById("run").disabled = true;
+  document.getElementById("btn-log-model").disabled = true;
 
   try {
     const file = JSON.parse(event.target.result);
@@ -182,8 +183,9 @@ function testFile(event) {
           message.textContent =
             time + ": The JSON file was successfully uploaded and validated.";
           log.appendChild(message);
-          document.getElementById("visualize").style.display = "block";
-          document.getElementById("run").style.display = "block";
+          document.getElementById("visualize").disabled = false;
+          document.getElementById("run").disabled = false;
+          document.getElementById("btn-log-model").disabled = false;
           sessionStorage.setItem("uploadedFile", JSON.stringify(file));
         } else {
           console.log("invalid");
