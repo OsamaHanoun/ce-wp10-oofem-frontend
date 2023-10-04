@@ -154,9 +154,13 @@ const schema = {
   },
 };
 export default function startHandler() {
+  document.getElementById("btn-visualize-model").disabled = true;
+  document.getElementById("btn-run").disabled = true;
+  document.getElementById("btn-log-model").disabled = true;
+
   document.getElementById("uploadFile").addEventListener("change", uploadFile);
   document
-    .getElementById("visualize")
+    .getElementById("btn-visualize-model")
     .addEventListener("click", () => runVisualizer("original"));
 }
 
@@ -164,9 +168,12 @@ export default function startHandler() {
 function testFile(event) {
   const container = document.getElementById("renderer-container");
   container.textContent = "";
-  document.getElementById("visualize").disabled = true;
-  document.getElementById("run").disabled = true;
+  document.getElementById("btn-visualize-model").disabled = true;
+  document.getElementById("btn-run").disabled = true;
   document.getElementById("btn-log-model").disabled = true;
+  document.getElementById("btn-log-results").disabled = true;
+  document.getElementById("btn-visualize-results").disabled = true;
+  document.getElementById("btn-download").disabled = true;
 
   try {
     const file = JSON.parse(event.target.result);
@@ -177,8 +184,8 @@ function testFile(event) {
         const valid = validate(data);
         if (valid) {
           log("The JSON file was successfully uploaded and validated");
-          document.getElementById("visualize").disabled = false;
-          document.getElementById("run").disabled = false;
+          document.getElementById("btn-visualize-model").disabled = false;
+          document.getElementById("btn-run").disabled = false;
           document.getElementById("btn-log-model").disabled = false;
           sessionStorage.setItem("uploadedFile", JSON.stringify(file));
         } else {

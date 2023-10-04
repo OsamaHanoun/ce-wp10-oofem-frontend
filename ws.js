@@ -1,7 +1,9 @@
 import log from "./src/logger";
 
 export default function startWS() {
-  document.getElementById("run").addEventListener("click", () => handleRun());
+  document
+    .getElementById("btn-run")
+    .addEventListener("click", () => handleRun());
 }
 
 function handleRun() {
@@ -35,7 +37,7 @@ function handleRun() {
       document.getElementById("btn-log-results").disabled = false;
       log("Received the results from the server");
     } catch (error) {
-      console.log(event.data);
+      log("From Server: " + event.data);
     }
   };
 }
