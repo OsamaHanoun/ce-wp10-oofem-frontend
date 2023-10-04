@@ -11,35 +11,25 @@
     <div class="">
       <nav id="sidebar">
         <h1 class="title"><a href="index.html" class="logo">Truss FEA</a></h1>
-        <ul class="">
-          <input
-            type="file"
-            class="chooser"
-            hidden
-            id="uploadFile"
-            accept=".json"
-          />
-          <label class="label" for="uploadFile">
-            <li>
-              <a>Upload JSON File</a>
-            </li>
-          </label>
-          <li>
-            <a href="schema.json" download="schema">Download JSON Schema</a>
-          </li>
-          <li style="display: none" id="visualize">
-            <a>Visualize</a>
-          </li>
-          <li style="display: none" id="run">
-            <a>Run</a>
-          </li>
-          <li style="display: none">
-            <a>Log Results</a>
-          </li>
-          <li style="display: none">
-            <a>Download Results</a>
-          </li>
-        </ul>
+        <input
+          type="file"
+          class="chooser"
+          hidden
+          id="uploadFile"
+          accept=".json"
+        />
+        <button onclick="document.getElementById('uploadFile').click()">
+          Upload JSON File
+        </button>
+        <button>
+          <a href="schema.json" download="schema">Download JSON Schema</a>
+        </button>
+        <button style="display: none" id="visualize">Visualize</button>
+        <button style="display: none" id="run">Run</button>
+        <button style="display: none">Log Results</button>
+        <button id="btn-download" disabled>
+          Download Results <a id="downloadAnchorElem" style="display: none"></a>
+        </button>
       </nav>
       <div id="content">
         <div id="log">

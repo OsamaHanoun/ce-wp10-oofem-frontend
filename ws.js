@@ -6,6 +6,8 @@ function handleRun() {
   const uploadedFileJSON = sessionStorage.getItem("uploadedFile");
   const data = JSON.parse(uploadedFileJSON);
 
+  sessionStorage.removeItem("downloadFile");
+
   const socket = new WebSocket("ws://localhost:8081");
   logger("Trying to establish connection with the server");
 
@@ -16,6 +18,13 @@ function handleRun() {
     const time = `[ ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ]`;
     message.textContent = time + ": Connection with the server is established";
     log.appendChild(message);
+
+    socket.send(
+      JSON.stringify({
+        eventName: "analyze",
+        payload: uploadedFileJSON,
+      })
+    );
   });
 
   socket.onerror = function (event) {
@@ -23,7 +32,13 @@ function handleRun() {
   };
 
   socket.onmessage = function (event) {
-    console.log("Received data: " + event.data);
+    try {
+      const results = JSON.parse(event.data).payload;
+      sessionStorage.setItem("downloadFile", JSON.stringify(results));
+      document.getElementById("btn-download").disabled = false;
+    } catch (error) {
+      console.log(event.data);
+    }
   };
 }
 
