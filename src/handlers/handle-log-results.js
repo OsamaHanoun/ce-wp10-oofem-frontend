@@ -1,13 +1,10 @@
+import log from "../logger";
+
 export default function handleLogResultsButton() {
   document.getElementById("btn-log-results").disabled = true;
 
   document.getElementById("btn-log-results").addEventListener("click", () => {
-    const log = document.querySelector("#log");
-    const message = document.createElement("p");
-    const d = new Date();
-    const time = `[ ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ]`;
-    message.innerHTML = time + generateStructureListing();
-    log.appendChild(message);
+    log(generateStructureListing());
   });
 }
 
@@ -15,8 +12,8 @@ function generateStructureListing() {
   const data = JSON.parse(sessionStorage.getItem("downloadFile"));
 
   return `Listing analysis results:
-
-  Displacements
+  <div class="listing-log-container">
+  <h2>Displacements</h2>
   <table>
   <tr>
     <th>idx</th>
@@ -32,7 +29,8 @@ function generateStructureListing() {
   )}
 </table>
 
-Element forces
+<h2>Element forces</h2>
+
 <table>
   <tr>
     <th>element</th>
@@ -44,5 +42,6 @@ Element forces
       `<tr><td>${element.id}</td><td>${element.axialForce}</td></tr>`,
     ""
   )}
-</table>`;
+  </table>
+  </div>`;
 }

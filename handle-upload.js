@@ -1,3 +1,4 @@
+import log from "./src/logger";
 //function to read the user uploaded file
 import Ajv from "ajv";
 import runVisualizer from "./visualize";
@@ -175,26 +176,13 @@ function testFile(event) {
       function test(data) {
         const valid = validate(data);
         if (valid) {
-          console.log("valid");
-          const log = document.querySelector("#log");
-          const message = document.createElement("p");
-          const d = new Date();
-          const time = `[ ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ]`;
-          message.textContent =
-            time + ": The JSON file was successfully uploaded and validated.";
-          log.appendChild(message);
+          log("The JSON file was successfully uploaded and validated");
           document.getElementById("visualize").disabled = false;
           document.getElementById("run").disabled = false;
           document.getElementById("btn-log-model").disabled = false;
           sessionStorage.setItem("uploadedFile", JSON.stringify(file));
         } else {
-          console.log("invalid");
-          const log = document.querySelector("#log");
-          const message = document.createElement("p");
-          const d = new Date();
-          const time = `[ ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ]`;
-          message.textContent = time + ":The uploaded JSON file is invalid.";
-          log.appendChild(message);
+          log("The uploaded JSON file is invalid");
           /*
 					validate.errors.forEach((error, index) => {
 					  console.log(`Error #${index + 1}:`);

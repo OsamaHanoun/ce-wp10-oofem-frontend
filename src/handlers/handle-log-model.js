@@ -1,22 +1,19 @@
+import log from "../logger";
+
 export default function handleLogModelButton() {
   document.getElementById("btn-log-model").disabled = true;
 
   document.getElementById("btn-log-model").addEventListener("click", () => {
-    const log = document.querySelector("#log");
-    const message = document.createElement("p");
-    const d = new Date();
-    const time = `[ ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ]`;
-    message.innerHTML = time + generateStructureListing();
-    log.appendChild(message);
+    log(generateStructureListing());
   });
 }
 
 function generateStructureListing() {
   const data = JSON.parse(sessionStorage.getItem("uploadedFile"));
 
-  return `Listing structure:
-
-Nodes
+  return ` Listing structure:
+  <div class="listing-log-container">
+<h2>Nodes</h2>
 <table>
   <tr>
     <th>idx</th>
@@ -32,7 +29,7 @@ Nodes
   )}
 </table>
 
-Constraints
+<h2>Constraints</h2>
 <table>
   <tr>
     <th>node</th>
@@ -59,7 +56,7 @@ Constraints
   }, "")}
 </table>
 
-Forces
+<h2>Forces</h2>
 <table>
   <tr>
     <th>node</th>
@@ -79,7 +76,8 @@ Forces
       return accumulator;
     }
   }, "")}
-</table>`;
+</table>
+</div>`;
 }
 function booleanToFixedOrFree(boolean) {
   return boolean ? "free" : "fixed";

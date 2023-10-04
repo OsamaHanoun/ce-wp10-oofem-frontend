@@ -1,32 +1,78 @@
 body {
   background-color: #dadfed;
+  overflow: hidden;
+}
+
+.title {
+  background-color: #5f6f99;
+  color: wheat;
+  font-family: system-ui;
+  text-align: center;
+  font-size: 30px;
+  padding: 5px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 30px;
+}
+
+#sidebar {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+#sidebar > button {
+  height: 58px;
 }
 
 #content {
   padding: 0 !important;
-  /* display: flex; */
-  /* flex-direction: column; */
 }
 
-.label {
-  width: 100%;
-  margin-bottom: 0;
+#log-container {
+  flex-grow: 1;
 }
 
-li {
-  cursor: pointer !important;
+#log-container > h1 {
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-family: system-ui;
 }
 
 #log {
-  padding: 4% 4%;
-  height: 250px;
+  background-color: #fcfcfd;
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.title {
-  margin-bottom: 0 !important;
-  background-color: #5f6f99;
-}
-.P {
+
+#log > p {
+  margin-bottom: 5px;
   color: #333333;
+}
+
+.listing-log-container {
+  margin-left: 100px;
+}
+
+.listing-log-container > h2 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.listing-log-container > table {
+  border-collapse: collapse;
+}
+.listing-log-container > table,
+td,
+th {
+  border: 1px solid;
+  padding: 3px;
 }
 
 /* ############# visualizer ############# */
