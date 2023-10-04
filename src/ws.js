@@ -1,4 +1,4 @@
-import log from "./src/logger";
+import log from "./logger";
 
 export default function startWS() {
   document

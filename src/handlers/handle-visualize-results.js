@@ -1,4 +1,4 @@
-import runVisualizer from "../../visualize";
+import runVisualizer from "../visualizer/visualize";
 
 export default function handleVisualizeResultsButton() {
   document.getElementById("btn-visualize-results").disabled = true;
