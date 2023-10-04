@@ -156,7 +156,7 @@ export default function startHandler() {
   document.getElementById("uploadFile").addEventListener("change", uploadFile);
   document
     .getElementById("visualize")
-    .addEventListener("click", () => runVisualizer());
+    .addEventListener("click", () => runVisualizer("original"));
 }
 
 //function that gets executed when the file is done uploading

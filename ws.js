@@ -36,6 +36,7 @@ function handleRun() {
       const results = JSON.parse(event.data).payload;
       sessionStorage.setItem("downloadFile", JSON.stringify(results));
       document.getElementById("btn-download").disabled = false;
+      document.getElementById("btn-visualize-results").disabled = false;
     } catch (error) {
       console.log(event.data);
     }
